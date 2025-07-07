@@ -20,27 +20,38 @@ class Episode extends StatelessWidget {
       onTap: onButtonTap,
       child: Container(
         margin: const EdgeInsets.only(bottom: 12),
-        decoration: BoxDecoration(
-          color: Color(0xFFD16D7F).withValues(alpha: 0.7),
-          borderRadius: BorderRadius.circular(20),
-        ),
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+          padding: const EdgeInsets.symmetric(vertical: 10),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Flexible(
-                child: Text(
-                  episode.title,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
-                  ),
-                  overflow: TextOverflow.ellipsis,
+              Expanded(
+                child: Row(
+                  children: [
+                    Container(
+                      margin: const EdgeInsets.only(right: 10),
+                      width: 100,
+                      child: Image.network(
+                        episode.thumb,
+                        headers: const {'Referer': 'https://comic.naver.com'},
+                      ),
+                    ),
+                    Expanded(
+                      child: Text(
+                        episode.title,
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                        ),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                  ],
                 ),
               ),
-              Icon(Icons.chevron_right_rounded, color: Colors.white),
+              Icon(Icons.chevron_right_rounded, color: Color(0xFFD16D7F)),
             ],
           ),
         ),
